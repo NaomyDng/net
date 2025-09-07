@@ -203,6 +203,12 @@ a{color:inherit;text-decoration:none}
     padding:10px 22px;font-size:0.9rem;border-radius:8px;
     background:var(--blue-main);border-color:var(--blue-main);color:#fff;
   }
+/* Desktop / tablette : garder le haut visible, recadrer vers le bas */
+@media (min-width:600px){
+  .hero .hero-bg img{
+    object-position: top center; /* ou: 50% 0 */
+  }
+}
 
   /* Numéro affiché en mobile sur bouton blanc */
   .phone-chip-mobile{
