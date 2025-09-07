@@ -7,12 +7,12 @@
   <meta name="description" content="Nettoyage Express à Bruxelles : sociétés, après chantier, semi-industriel. Pas de particuliers." />
 
   <!-- CSS en premier -->
-  <link rel="stylesheet" href="styles.css?v=8" />
+  <link rel="stylesheet" href="styles.css?v=9" />
 
   <!-- Preconnect utiles -->
   <link rel="preconnect" href="https://formspree.io" crossorigin>
 
-  <!-- Preload LCP -->
+  <!-- Preload LCP (AVIF + dimensions exactes) -->
   <link rel="preload" as="image" href="images/hero-1600.avif"
         imagesrcset="images/hero-1200.avif 1200w, images/hero-1600.avif 1600w, images/hero-2000.avif 2000w"
         imagesizes="100vw" type="image/avif">
@@ -41,15 +41,7 @@
   </header>
 
   <!-- ACCUEIL -->
-  <section id="accueil" class="hero section">
-    <!-- CTA centré -->
-    <div class="hero-center">
-      <a href="index.html#services" class="cta-button">Découvrir nos services</a>
-    </div>
-
-    <!-- Slogan en bas à gauche -->
-    <h1 class="slogan">PARCE QUE VOTRE TEMPS EST PRÉCIEUX</h1>
-
+  <section id="accueil" class="hero section" aria-label="Section d’accueil">
     <!-- Image de fond -->
     <picture class="hero-bg" aria-hidden="true">
       <source type="image/avif"
@@ -58,8 +50,21 @@
       <source type="image/webp"
         srcset="images/hero-1200.webp 1200w, images/hero-1600.webp 1600w, images/hero-2000.webp 2000w"
         sizes="100vw">
-      <img src="images/hero-1600.webp" alt="" loading="eager" fetchpriority="high" decoding="async">
+      <img src="images/hero-1600.webp" alt="" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
     </picture>
+
+    <!-- CTA centré (mobile : au centre, réduit) -->
+    <div class="hero-center">
+      <a href="index.html#services" class="cta-button">Découvrir nos services</a>
+
+      <!-- Numéro affiché sur mobile (style puce) -->
+      <a class="phone-chip-mobile" href="tel:+3224110911" aria-label="Appeler Nettoyage Express">
+        +32&nbsp;2&nbsp;411&nbsp;09&nbsp;11
+      </a>
+    </div>
+
+    <!-- Slogan (masqué en mobile selon demande) -->
+    <h1 class="slogan">PARCE QUE VOTRE TEMPS EST PRÉCIEUX</h1>
   </section>
 
   <!-- SERVICES -->
@@ -156,7 +161,7 @@
     <picture>
       <source srcset="images/form.avif" type="image/avif">
       <source srcset="images/form.webp" type="image/webp">
-      <img src="images/form.webp" alt="" width="68" height="68">
+      <img src="images/form.webp" alt="" width="68" height="68" loading="lazy" decoding="async">
     </picture>
   </button>
 
@@ -190,7 +195,7 @@
     function closeDrawer(){ drawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
     drawer.addEventListener('click', e => { if(e.target === drawer) closeDrawer(); });
 
-    // Formspree AJAX (message de succès inline)
+    // Formspree AJAX (message de succès inline, non bloquant rendu)
     document.querySelectorAll('form[data-formspree]').forEach(form=>{
       const status = form.querySelector('.form-status');
       form.addEventListener('submit', async (e)=>{
