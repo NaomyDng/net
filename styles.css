@@ -155,39 +155,79 @@ a{color:inherit;text-decoration:none}
   flex:1;overflow:auto;border:none;border-radius:0;padding:16px;background:#fff
 }
 
-/* ===== RESPONSIVE ===== */
+/* ===== RESPONSIVE (avec HERO mobile Option 1 : grand, image entière) ===== */
+
+/* --- MOBILE ≤599px --- */
 @media (max-width:599px){
-  /* --- NAVBAR --- */
+  /* NAVBAR */
   .navbar{height:68px}
   .nav-logo{width:140px;height:64px;transform:translateY(-4px)}
   .nav-logo img{width:130px}
 
- @media (max-width:599px){
+  /* HERO : plus grand, image entière, aucun blanc au-dessus */
   .hero{
-    padding-top:0;
-    margin-top:68px;          /* colle sous la navbar */
-    min-height:60vh;          /* 🔥 garantit que le hero est plus grand que les cartes */
+    position:relative;
+    padding-top:0;          /* pas d’espace interne en haut */
+    margin-top:68px;        /* pousse sous la navbar fixe (68px) */
+    min-height:85vh;        /* occupe ~85% de l’écran pour plus de présence */
+    display:flex;
+    align-items:center;
+    justify-content:center;
     text-align:center;
+    overflow:hidden;
+    background:#fff;        /* fond propre derrière les éventuelles bandes internes */
   }
-
   .hero .hero-bg{
-    position:static;
-    inset:auto;
+    position:absolute; inset:0;  /* occupe tout le hero */
+    z-index:0;
   }
-
   .hero .hero-bg img{
     width:100%;
-    height:100%;              /* l’image occupe la hauteur dispo */
-    max-height:80vh;          /* limite pour ne pas dépasser tout l’écran */
-    object-fit:contain;       /* image entière */
-    object-position:center;
+    height:100%;
+    object-fit:contain;     /* image entière visible (pas recadrée) */
+    object-position:center; /* centrage propre */
+    display:block;
   }
-}
-  @media (max-width:599px){
+
+  /* Contenu du hero (bouton, etc.) */
+  .hero-center{
+    position:relative; z-index:2;
+  }
+  .hero-center .cta-button{
+    padding:12px 22px; font-size:0.95rem;
+  }
+
+  /* SLOGAN : sous l’image, sur fond blanc, en vert */
   .slogan{
-    color: var(--green-accent);  /* vert identité */
-    text-shadow: none;           /* pas d’ombre en mobile */
+    position:static;        /* sort de l’absolu pour passer sous l’image */
+    margin:0; padding:12px 16px 14px;
+    background:#fff;
+    color:var(--green-accent);
+    text-shadow:none;
     font-weight:700;
+    font-size:1.2rem; line-height:1.25;
+    text-align:center;
+    z-index:auto;
   }
+
+  /* CARTES / IMAGES */
+  .card picture,.card img{height:220px}
+
+  /* CONTACT : masquer l’image à côté du formulaire */
+  .contact-grid-image .contact-illustration{display:none}
 }
 
+/* --- TABLET ≥768px --- */
+@media (min-width:768px){
+  .nav-links{display:flex}
+  .page-title{font-size:1.9rem}
+  .category h2{font-size:1.2rem}
+  .cards-3{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr 1fr}
+}
+
+/* --- DESKTOP LARGE ≥1100px --- */
+@media (min-width:1100px){
+  .cards-3{grid-template-columns:repeat(3,1fr)}
+  .slogan{font-size:2.1rem}
+}
