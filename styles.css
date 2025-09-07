@@ -259,82 +259,61 @@ a{color:inherit;text-decoration:none}
   }
 }
 /* ===== RESPONSIVE (mobile avec hero 85vh, bouton réduit centré, slogan sous l'image) ===== */
-
-/* --- MOBILE ≤599px --- */
+/* ===== MOBILE: HERO avec bouton centré réduit, slogan en dessous ===== */
 @media (max-width:599px){
   /* NAVBAR */
   .navbar{height:68px}
   .nav-logo{width:140px;height:64px;transform:translateY(-4px)}
   .nav-logo img{width:130px}
 
-  /* HERO : image entière, collée sous la nav, hauteur confortable */
+  /* HERO */
   .hero{
     padding-top:0;
-    margin-top:68px;          /* colle juste sous la navbar fixe */
-    min-height:85vh;          /* hero plus “présent” en mobile */
-    display:flex;align-items:center;justify-content:center;
-    position:relative;overflow:hidden;background:#fff;text-align:center;
+    margin-top:68px;          /* colle juste sous la navbar */
+    min-height:85vh;          /* hauteur immersive */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    background:#fff;
+    text-align:center;
   }
   .hero .hero-bg{position:absolute;inset:0;z-index:0}
   .hero .hero-bg img{
     width:100%;height:100%;
-    object-fit:contain;       /* image entière (pas recadrée) */
-    object-position:top center;/* démarre tout en haut du hero → pas de blanc au-dessus */
+    object-fit:contain;        /* image entière visible */
+    object-position:top center;/* collée en haut */
     display:block;
   }
 
-  /* Bouton “Découvrir nos services” — petit et centré */
+  /* Bouton au centre du hero (comme desktop) mais réduit */
   .hero-center{
-    position:relative;z-index:2;
-    display:grid;place-items:center;
+    position:relative;
+    z-index:2;
   }
   .hero-center .cta-button{
-    padding:10px 18px;        /* plus petit */
-    font-size:0.9rem;         /* plus petit */
-    border-radius:10px;
+    padding:8px 18px;          /* plus compact */
+    font-size:0.85rem;         /* plus petit texte */
+    border-radius:8px;
   }
 
-  /* SLOGAN : sous l'image (en dehors du hero), vert sur fond blanc */
+  /* Slogan sort du hero → s'affiche en dessous sur fond blanc */
   .slogan{
-    position:static;          /* sort du positionnement absolu */
-    margin:0; padding:10px 16px 14px;
+    position:static;
+    margin:0;
+    padding:10px 16px 14px;
     background:#fff;
     color:var(--green-accent);
     text-shadow:none;
     font-weight:700;
-    font-size:1.15rem;
-    line-height:1.25;
+    font-size:1.1rem;
+    line-height:1.3;
     text-align:center;
-    z-index:auto;
   }
 
-  /* Espacement : réduire l'espace entre Accueil (hero) et Nos services */
-  .section{scroll-margin-top:72px}
-  .section-compact{padding-top:36px;padding-bottom:40px}   /* avant 80/60 */
+  /* Réduction de l'espace entre sections */
+  .section-compact{padding-top:36px;padding-bottom:40px}
   .section-compact-below{padding-top:28px;padding-bottom:32px}
-  .reservation-page{padding:72px 16px 48px}                /* un peu plus serré */
-  .page-title{margin-bottom:20px}                          /* réduis la marge sous le titre */
-
-  /* CARTES / IMAGES */
-  .cards{gap:18px}
-  .card picture,.card img{height:220px} /* hauteur image carte */
-
-  /* CONTACT : masquer l’image à côté du formulaire */
-  .contact-grid-image .contact-illustration{display:none}
+  .page-title{margin-bottom:20px}
 }
-
-/* --- TABLET ≥768px --- */
-@media (min-width:768px){
-  .nav-links{display:flex}
-  .page-title{font-size:1.9rem}
-  .category h2{font-size:1.2rem}
-  .cards-3{grid-template-columns:repeat(2,1fr)}
-  .contact-grid{grid-template-columns:1fr 1fr}
-}
-
-/* --- DESKTOP LARGE ≥1100px --- */
-@media (min-width:1100px){
-  .cards-3{grid-template-columns:repeat(3,1fr)}
-  .slogan{font-size:2.1rem}
-}
-
