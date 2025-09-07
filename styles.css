@@ -224,3 +224,17 @@ a{color:inherit;text-decoration:none}
   /* Contact : cacher l’image en mobile */
   .contact-grid-image .contact-illustration{display:none}
 }
+/* Desktop : ne coupe plus en haut (hero sous la navbar) */
+@media (min-width:600px){
+  .hero{
+    padding-top: 0;                 /* on enlève la cause du crop */
+    margin-top: 72px;               /* on pousse le hero sous la nav */
+    min-height: calc(100vh - 72px); /* garde le plein écran net */
+  }
+  .hero .hero-bg{ position:absolute; inset:0; }
+  .hero .hero-bg img{
+    width:100%; height:100%;
+    object-fit: cover;              /* plein écran */
+    object-position: top center;    /* s’il faut recadrer → vers le bas */
+  }
+}
