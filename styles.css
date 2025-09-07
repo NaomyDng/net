@@ -259,9 +259,7 @@ a{color:inherit;text-decoration:none}
   }
 }
 /* ===== RESPONSIVE (mobile avec hero 85vh, bouton réduit centré, slogan sous l'image) ===== */
-/* ===== MOBILE: HERO avec bouton centré réduit, slogan en dessous ===== */
-/* ===== MOBILE: bouton pleine largeur dans le hero + slogan en dessous ===== */
-/* ===== MOBILE: HERO avec bouton centré réduit, sans slogan ===== */
+/* ===== MOBILE: HERO ajusté à l'image, sans blanc en dessous ===== */
 @media (max-width:599px){
   /* NAVBAR */
   .navbar{height:68px}
@@ -272,7 +270,7 @@ a{color:inherit;text-decoration:none}
   .hero{
     padding-top:0;
     margin-top:68px;          /* colle direct sous la navbar */
-    min-height:75vh;          /* un peu moins haut qu'avant → moins de blanc */
+    min-height:auto;          /* ❌ supprime la hauteur forcée (vh) */
     display:flex;
     align-items:center;
     justify-content:center;
@@ -281,18 +279,20 @@ a{color:inherit;text-decoration:none}
     background:#fff;
     text-align:center;
   }
-  .hero .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero .hero-bg{position:relative;z-index:0}
   .hero .hero-bg img{
     width:100%;
-    height:100%;
-    object-fit:contain;        /* image entière visible */
-    object-position:top center;
+    height:auto;              /* garde proportions originales */
+    object-fit:contain;       /* image entière visible */
+    object-position:top;
     display:block;
   }
 
-  /* Bouton au centre du hero */
+  /* Bouton centré dans le hero */
   .hero-center{
-    position:relative;
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
     z-index:2;
   }
   .hero-center .cta-button{
@@ -301,6 +301,6 @@ a{color:inherit;text-decoration:none}
     border-radius:8px;
   }
 
-  /* SLOGAN désactivé en mobile */
+  /* Slogan désactivé en mobile */
   .slogan{display:none;}
 }
