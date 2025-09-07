@@ -225,42 +225,24 @@ a{color:inherit;text-decoration:none}
     font-weight: 700;
   }
 }
-/* ===== MOBILE HERO FIXED FULL HEIGHT (sans bandes blanches) ===== */
+/* ===== MOBILE HERO IMAGE ENTIÈRE SANS BANDE BLANCHE AU-DESSUS ===== */
 @media (max-width:599px){
   .hero{
-    padding-top:0;          /* colle direct à la navbar */
-    min-height:100vh;       /* garde toute la hauteur de l'écran */
-  }
-
-  .hero .hero-bg{
-    position:absolute;
-    inset:0;                /* prend tout l’espace du hero */
+    padding-top:0;          /* supprime le blanc en haut */
+    min-height:auto;        /* pas de forçage en hauteur */
   }
 
   .hero .hero-bg img{
     width:100%;
-    height:100%;
-    object-fit:cover;       /* rempli tout, pas de bandes blanches */
-    object-position:center; /* centré verticalement et horizontalement */
-  }
-
-  /* Décale le contenu pour ne pas être sous la navbar */
-  .hero-center{
-    position:relative;
-    z-index:2;
-    margin-top:68px;        /* hauteur navbar */
-  }
-
-  /* Le slogan remonte sous la photo (pas au-dessus) */
-  .slogan{
-    display:none;
-  }
-  .slogan-below{
+    height:auto;            /* garde les proportions originales */
+    object-fit:contain;     /* affiche l'image entière */
+    object-position:top;    /* commence collé sous la navbar */
     display:block;
-    padding:12px 16px;
-    background:#fff;
-    color:var(--green-accent);
-    font-weight:700;
-    text-align:center;
+  }
+
+  /* Décale le contenu centré pour ne pas être sous la navbar */
+  .hero-center{
+    margin-top:68px;        /* hauteur de la navbar */
   }
 }
+
