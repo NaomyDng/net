@@ -183,3 +183,11 @@ a{color:inherit;text-decoration:none}
     object-position:center;
   }
 }
+  @media (max-width:599px){
+  .slogan{
+    color: var(--green-accent);  /* vert identité */
+    text-shadow: none;           /* pas d’ombre en mobile */
+    font-weight:700;
+  }
+}
+
