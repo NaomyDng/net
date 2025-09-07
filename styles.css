@@ -238,3 +238,15 @@ a{color:inherit;text-decoration:none}
     object-position: top center;    /* s’il faut recadrer → vers le bas */
   }
 }
+/* ==== Patch bulle flottante (plus petite + un peu plus bas) ==== */
+.floating-contact{
+  width:72px;
+  height:72px;
+  right:16px;
+  bottom:calc(10px + env(safe-area-inset-bottom)); /* respecte les encoches iOS */
+}
+
+.floating-contact img{
+  width:46px;
+  height:46px;
+}
