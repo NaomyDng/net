@@ -1,3 +1,9 @@
+Oui — voici **le fichier complet** avec **uniquement** les deux corrections demandées :
+
+1. la **section Contact** contient maintenant un **`<form>`** avec `for/id` corrects ;
+2. le **formulaire du drawer** a ses labels liés (`for/id`).
+
+```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -5,7 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Contact – Nettoyage Express</title>
   <meta name="description" content="Contactez Nettoyage Express à Bruxelles pour un devis de nettoyage professionnel." />
-  <link rel="stylesheet" href="styles.css?v=10" />
+  <link rel="stylesheet" href="styles.css?v=11" />
   <link rel="preconnect" href="https://formspree.io" crossorigin>
 </head>
 <body data-page="contact">
@@ -18,9 +24,9 @@
     </nav>
     <a href="index.html#accueil" class="nav-logo" aria-label="Nettoyage Express">
       <picture>
-        <source srcset="images/logo.avif?v=10" type="image/avif">
-        <source srcset="images/logo.webp?v=10" type="image/webp">
-        <img src="images/logo.webp?v=10" alt="Logo Nettoyage Express" width="44" height="44" />
+        <source srcset="images/logo.avif?v=11" type="image/avif">
+        <source srcset="images/logo.webp?v=11" type="image/webp">
+        <img src="images/logo.webp?v=11" alt="Logo Nettoyage Express" width="44" height="44" />
       </picture>
     </a>
     <div class="nav-right">
@@ -37,24 +43,29 @@
         <!-- Image à côté du formulaire -->
         <div class="contact-illustration">
           <picture>
-            <source srcset="images/contact.avif?v=10" type="image/avif">
-            <source srcset="images/contact.webp?v=10" type="image/webp">
-            <img src="images/contact.webp?v=10" alt="Nettoyage professionnel à Bruxelles" loading="lazy" width="1200" height="800">
+            <source srcset="images/contact.avif?v=11" type="image/avif">
+            <source srcset="images/contact.webp?v=11" type="image/webp">
+            <img src="images/contact.webp?v=11" alt="Nettoyage professionnel à Bruxelles" loading="lazy" width="1200" height="800">
           </picture>
         </div>
 
-        <label for="contact-company">Nom / Société*</label>
-<input id="contact-company" type="text" name="company" required>
+        <!-- Formulaire avec labels associés -->
+        <form action="https://formspree.io/f/your-id-here" method="POST" class="contact-form" autocomplete="on" data-formspree>
+          <label for="contact-company">Nom / Société*</label>
+          <input id="contact-company" type="text" name="company" required>
 
-<label for="contact-email">Email*</label>
-<input id="contact-email" type="email" name="email" required>
+          <label for="contact-email">Email*</label>
+          <input id="contact-email" type="email" name="email" required>
 
-<label for="contact-phone">Téléphone</label>
-<input id="contact-phone" type="tel" name="phone">
+          <label for="contact-phone">Téléphone</label>
+          <input id="contact-phone" type="tel" name="phone">
 
-<label for="contact-message">Message*</label>
-<textarea id="contact-message" name="message" rows="6" required></textarea>
+          <label for="contact-message">Message*</label>
+          <textarea id="contact-message" name="message" rows="6" required></textarea>
 
+          <button type="submit">Envoyer la demande</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
   </main>
@@ -74,9 +85,9 @@
   <!-- BOUTON FLOTTANT -->
   <button class="floating-contact" aria-label="Demande de devis">
     <picture>
-      <source srcset="images/form.avif?v=10" type="image/avif">
-      <source srcset="images/form.webp?v=10" type="image/webp">
-      <img src="images/form.webp?v=10" alt="" width="68" height="68">
+      <source srcset="images/form.avif?v=11" type="image/avif">
+      <source srcset="images/form.webp?v=11" type="image/webp">
+      <img src="images/form.webp?v=11" alt="" width="68" height="68">
     </picture>
   </button>
 
@@ -87,14 +98,18 @@
       <button class="drawer-close" aria-label="Fermer">×</button>
     </div>
     <form action="https://formspree.io/f/your-id-here" method="POST" class="contact-form" autocomplete="on" data-formspree>
-      <label>Nom / Société*</label>
-      <input type="text" name="company" required>
-      <label>Email*</label>
-      <input type="email" name="email" required>
-      <label>Téléphone</label>
-      <input type="tel" name="phone">
-      <label>Message*</label>
-      <textarea name="message" rows="5" required></textarea>
+      <label for="drawer-company">Nom / Société*</label>
+      <input id="drawer-company" type="text" name="company" required>
+
+      <label for="drawer-email">Email*</label>
+      <input id="drawer-email" type="email" name="email" required>
+
+      <label for="drawer-phone">Téléphone</label>
+      <input id="drawer-phone" type="tel" name="phone">
+
+      <label for="drawer-message">Message*</label>
+      <textarea id="drawer-message" name="message" rows="5" required></textarea>
+
       <button type="submit">Envoyer la demande</button>
       <p class="form-status" role="status" aria-live="polite"></p>
     </form>
@@ -142,3 +157,4 @@
   </script>
 </body>
 </html>
+```
