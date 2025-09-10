@@ -6,7 +6,7 @@
   <title>Nettoyage Express – Parce que votre temps est précieux</title>
   <meta name="description" content="Nettoyage Express à Bruxelles : sociétés, après chantier, semi-industriel. Pas de particuliers." />
   <!-- CSS en premier -->
-  <link rel="stylesheet" href="styles.css?v=11" />
+  <link rel="stylesheet" href="styles.css?v=12" />
   <!-- Preconnect utiles -->
   <link rel="preconnect" href="https://formspree.io" crossorigin>
   <!-- Preload LCP (AVIF + dimensions exactes) -->
@@ -18,7 +18,16 @@
 <body>
   <!-- NAVBAR -->
   <header class="navbar">
-    <nav class="nav-left nav-links">
+    <!-- ⬇️ Bouton hamburger (ajout) -->
+    <button class="nav-toggle" aria-label="Ouvrir le menu"
+            aria-controls="primary-nav" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <!-- id ajouté pour lier le bouton -->
+    <nav id="primary-nav" class="nav-left nav-links">
       <a href="index.html#accueil" class="active">Accueil</a>
       <a href="index.html#services">Services</a>
       <a href="index.html#contact">Contact</a>
@@ -212,6 +221,25 @@
           if(r.ok){ form.reset(); status.textContent = '✅ Merci, votre message a bien été envoyé.'; }
           else{ status.textContent = '⚠️ Une erreur est survenue. Réessayez.'; }
         }catch{ status.textContent = '⚠️ Réseau indisponible. Réessayez.'; }
+      });
+    });
+
+    // ⬇️ Menu mobile (hamburger) — ajout
+    const navbar = document.querySelector('.navbar');
+    const burger  = document.querySelector('.nav-toggle');
+    const menu    = document.getElementById('primary-nav');
+
+    burger.addEventListener('click', () => {
+      const open = navbar.classList.toggle('menu-open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navbar.classList.remove('menu-open');
+        burger.setAttribute('aria-expanded','false');
+        document.body.style.overflow = '';
       });
     });
   </script>
